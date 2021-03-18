@@ -31,6 +31,7 @@ class OddRegularGraph:
         return graph
 
     def generate_edges(self, n: int, k: int):
+        """Generates k edges for n nodes."""
         # First pass
         for x in self.graph:
             for y in range(n + 1):
@@ -47,10 +48,11 @@ class OddRegularGraph:
                     self.graph.add_edge(x, (x + i) % n)
 
     def draw_circular_graph(self):
+        """Draw and save the graph."""
         nx.draw_circular(self.graph, node_color="pink", node_size=1000, with_labels=True)
+        plt.savefig("odd_regular_graph.png")
 
 
 if __name__ == "__main__":
     org = OddRegularGraph(12, 3)
     org.draw_circular_graph()
-    plt.show()
