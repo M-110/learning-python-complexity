@@ -8,15 +8,15 @@ Node = int
 Edge = Tuple[Node, Node]
 
 
-class WattsStogatz:
-    """Watts Stogatz Graph."""
+class WattsStrogatz:
+    """Watts Strogatz Graph."""
 
     def __init__(self, n: int, k: int, p: float):
-        graph = self.create_ring_lattice(n, k)
+        self.graph = self.create_ring_lattice(n, k)
 
-    def create_ring_lattice(n: int, k: int) -> nx.Graph:
+    def create_ring_lattice(self, n: int, k: int) -> nx.Graph:
         """Create a ring lattice graph."""
-        graph = nx.Graph()
+        self.graph = nx.Graph()
         nodes = range(n)
         graph.add_nodes_from(nodes)
         graph.add_edges_from((node, (node + i) % n)
