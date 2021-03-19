@@ -69,7 +69,7 @@ class WattsStrogatz:
         return np.mean(self.path_lengths())
 
 
-def analyze_graph(n, k, p):
+def analyze_graph(n: int, k: int, p: float):
     """Create a graph of n nodes with k edges and p probability of 
     rewiring and return the characteristic path length and
     clustering coefficient."""
