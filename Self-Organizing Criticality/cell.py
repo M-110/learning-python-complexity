@@ -42,6 +42,7 @@ class Cell2D:
         
         return plt.imshow(grid, cmap='Blues', alpha=.3, vmax=4)
     
+    # TODO: REMOVE THIS, UNUSED?
     def animate(self, frames, interval=None, step=None):
         if step is None:
             step = self.step
@@ -83,5 +84,4 @@ class Cell2D:
             
         self.image.set_array(self.grid)
         
-        return (self.image,)
-    
+        return self.image,

@@ -1,3 +1,8 @@
+"""Simple function implementation of a 1d cellular automaton.
+
+Saves an image of the resulting CA.
+"""
+
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
@@ -51,7 +56,6 @@ def fast_step(array, i, window=[1, 1, 1]):
 
     # use the np.correlate function to speed up the step calculations
     correlation = np.correlate(previous_row, window, mode='same')
-    print(correlation % 2)
     array[i] = correlation % 2
 
 
@@ -60,7 +64,7 @@ def step_over_all_rows(array, step_function):
     for i in range(1, array.shape[0]):
         step_function(array, i)
     plt.imshow(array)
-    plt.show()
+    plt.savefig("simple_function_ca.png")
 
 
 if __name__ == "__main__":
