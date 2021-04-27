@@ -1,4 +1,9 @@
-﻿import numpy as np
+﻿"""Simulation of diffusion using the Cell2D parent class.
+
+The example creates a smaller square as the initial conditions as well saves
+the result as a gif which shows the red square diffuse until it has disappeared.
+"""
+import numpy as np
 from scipy.signal import correlate2d
 
 from complexity.game_of_life.cell_2d import Cell2D

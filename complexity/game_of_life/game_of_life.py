@@ -1,9 +1,11 @@
-﻿import numpy as np
-import matplotlib.pyplot as plt
-from random import randint
+﻿"""An implementation of Conway's game of life using the Cell2D parent class.
 
-from matplotlib import animation
-from scipy.signal import convolve2d, correlate2d
+The initial state used in the example below is a 'glider gun' which is an endless
+looping pattern that keeps producing moving objects that look like gliders.
+"""
+
+import numpy as np
+from scipy.signal import correlate2d
 
 from complexity.game_of_life.cell_2d import Cell2D
 
@@ -56,4 +58,4 @@ if __name__ == "__main__":
 
     life.add_cells(10, 10, glider_gun)
 
-    life.save_gif("toad", frames=1500, fps=15)
+    life.save_gif("glider_gun", frames=150, fps=15)

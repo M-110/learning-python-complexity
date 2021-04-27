@@ -1,4 +1,7 @@
-﻿from abc import abstractmethod
+﻿"""Cell2D is meant as a base class which can be subclassed and allow
+subclasses the functionality of things like saving the plot as an animated gif."""
+
+from abc import abstractmethod
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
@@ -43,7 +46,7 @@ class Cell2D:
         ...
 
     def draw(self):
-        """Draw the grid"""
+        """Draw the grid."""
         g = self.array.copy()
         
         # Get width/height of grid for plotting
@@ -55,9 +58,11 @@ class Cell2D:
         self.image = plt.imshow(g, **self.plot_options)
 
     def animation_init_function(self):
+        """Called when the animate_gif method begins."""
         print('Beginning animation.')
 
     def animate_function(self, i):
+        """Executes one step and updates the image with the new array."""
         if i > 0:
             self.step()
 
@@ -66,6 +71,8 @@ class Cell2D:
         return self.image,
 
     def animate_gif(self, frames, interval):
+        """Returns an animation that calls the animation for the length of the
+        interval."""
         fig = plt.gcf()
         self.draw()
 
@@ -74,6 +81,7 @@ class Cell2D:
                                        frames=frames, interval=interval)
 
     def save_gif(self, filename='my_gif', frames=300, interval=1, fps=30):
+        """Save the plot as an animated gif file."""
         writer_gif = animation.PillowWriter(fps=fps)
         self.animate_gif(frames, interval).save(f'{filename}.gif',
                                                 writer=writer_gif)
